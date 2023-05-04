@@ -38,6 +38,7 @@ Coded by www.creative-tim.com
 // Soft UI Dashboard React layouts
 import Dashboard from "layouts/dashboard";
 import Tables from "layouts/tables";
+import Leads from "layouts/leads";
 import Billing from "layouts/billing";
 import VirtualReality from "layouts/virtual-reality";
 import RTL from "layouts/rtl";
@@ -46,14 +47,16 @@ import SignIn from "layouts/authentication/sign-in";
 import SignUp from "layouts/authentication/sign-up";
 
 // Soft UI Dashboard React icons
-import Shop from "examples/Icons/Shop";
-import Office from "examples/Icons/Office";
+import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import Settings from "examples/Icons/Settings";
-import Document from "examples/Icons/Document";
-import SpaceShip from "examples/Icons/SpaceShip";
-import CustomerSupport from "examples/Icons/CustomerSupport";
 import CreditCard from "examples/Icons/CreditCard";
-import Cube from "examples/Icons/Cube";
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import PersonIcon from '@mui/icons-material/Person';
+import LocalParkingIcon from '@mui/icons-material/LocalParking';
+import RoomIcon from '@mui/icons-material/Room';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import LogoutIcon from '@mui/icons-material/Logout';
+import DashboardIcon from '@mui/icons-material/Dashboard';
 
 const routes = [
   {
@@ -61,29 +64,48 @@ const routes = [
     name: "Dashboard",
     key: "dashboard",
     route: "/dashboard",
-    icon: <Shop size="12px" />,
+    icon: <DashboardIcon size="12px" />,
     component: <Dashboard />,
+    noCollapse: true,
+  },
+  { type: "title", title: "Customers", key: "customers-type-pages" },
+  {
+    type: "collapse",
+    name: "Leads",
+    key: "leads",
+    route: "/leads",
+    icon: <PersonIcon size="12px" />,
+    component: <Leads />,
     noCollapse: true,
   },
   {
     type: "collapse",
-    name: "Tables",
-    key: "tables",
+    name: "Customers",
+    key: "customers",
     route: "/tables",
-    icon: <Office size="12px" />,
+    icon: <PeopleAltIcon size="12px" />,
     component: <Tables />,
     noCollapse: true,
   },
   {
     type: "collapse",
-    name: "Billing",
-    key: "billing",
+    name: "VIPs",
+    key: "vips",
+    route: "/tables",
+    icon: <AutoAwesomeIcon size="12px" />,
+    component: <Tables />,
+    noCollapse: true,
+  },
+  {
+    type: "collapse",
+    name: "Transactions",
+    key: "transactions",
     route: "/billing",
     icon: <CreditCard size="12px" />,
     component: <Billing />,
     noCollapse: true,
   },
-  {
+  /* {
     type: "collapse",
     name: "Virtual Reality",
     key: "virtual-reality",
@@ -100,33 +122,52 @@ const routes = [
     icon: <Settings size="12px" />,
     component: <RTL />,
     noCollapse: true,
-  },
-  { type: "title", title: "Account Pages", key: "account-pages" },
+  }, */
+  { type: "title", title: "Parking Managment", key: "parking-managment-pages" },
   {
     type: "collapse",
-    name: "Profile",
-    key: "profile",
+    name: "Parkings",
+    key: "parkings",
     route: "/profile",
-    icon: <CustomerSupport size="12px" />,
+    icon: <LocalParkingIcon size="12px" />,
     component: <Profile />,
     noCollapse: true,
   },
   {
     type: "collapse",
-    name: "Sign In",
-    key: "sign-in",
+    name: "Spots",
+    key: "spots",
     route: "/authentication/sign-in",
-    icon: <Document size="12px" />,
+    icon: <RoomIcon size="12px" />,
+    component: <SignIn />,
+    noCollapse: true,
+  },
+  { type: "title", title: "Admin Settings", key: "admin-settings-pages" },
+  {
+    type: "collapse",
+    name: "Configuration",
+    key: "settings",
+    route: "/authentication/sign-in",
+    icon: <Settings size="12px" />,
     component: <SignIn />,
     noCollapse: true,
   },
   {
     type: "collapse",
-    name: "Sign Up",
-    key: "sign-up",
-    route: "/authentication/sign-up",
-    icon: <SpaceShip size="12px" />,
-    component: <SignUp />,
+    name: "Profile",
+    key: "profile",
+    route: "/profile",
+    icon: <AccountCircleIcon size="12px" />,
+    component: <Profile />,
+    noCollapse: true,
+  },
+  {
+    type: "collapse",
+    name: "Log out",
+    key: "log-out",
+    route: "/authentication/sign-in",
+    icon: <LogoutIcon size="12px" />,
+    component: <SignIn />,
     noCollapse: true,
   },
 ];

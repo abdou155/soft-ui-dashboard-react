@@ -54,36 +54,36 @@ function Dashboard() {
           <Grid container spacing={3}>
             <Grid item xs={12} sm={6} xl={3}>
               <MiniStatisticsCard
-                title={{ text: "today's money" }}
-                count="$53,000"
-                percentage={{ color: "success", text: "+55%" }}
+                title={{ text: "today's revenu" }}
+                count="TND 53,000"
+                //percentage={{ color: "success", text: "+55%" }}
                 icon={{ color: "info", component: "paid" }}
               />
             </Grid>
             <Grid item xs={12} sm={6} xl={3}>
               <MiniStatisticsCard
-                title={{ text: "today's users" }}
-                count="2,300"
-                percentage={{ color: "success", text: "+3%" }}
+                title={{ text: "total customer" }}
+                count="5000"
+                //percentage={{ color: "success", text: "+3%" }}
                 icon={{ color: "info", component: "public" }}
               />
             </Grid>
             <Grid item xs={12} sm={6} xl={3}>
               <MiniStatisticsCard
-                title={{ text: "new clients" }}
-                count="+3,462"
-                percentage={{ color: "error", text: "-2%" }}
+                title={{ text: "today's VIP" }}
+                count="0"
+                //percentage={{ color: "error", text: "-2%" }}
                 icon={{ color: "info", component: "emoji_events" }}
               />
             </Grid>
             <Grid item xs={12} sm={6} xl={3}>
               <MiniStatisticsCard
-                title={{ text: "sales" }}
-                count="$103,430"
-                percentage={{ color: "success", text: "+5%" }}
+                title={{ text: "Reserved spots" }}
+                count="13"
+                //percentage={{ color: "success", text: "+5%" }}
                 icon={{
                   color: "info",
-                  component: "shopping_cart",
+                  component: "room",
                 }}
               />
             </Grid>
@@ -91,12 +91,12 @@ function Dashboard() {
         </SoftBox>
         <SoftBox mb={3}>
           <Grid container spacing={3}>
-            <Grid item xs={12} lg={7}>
+            <Grid item xs={12} lg={12}>
               <BuildByDevelopers />
             </Grid>
-            <Grid item xs={12} lg={5}>
+            {/* <Grid item xs={12} lg={5}>
               <WorkWithTheRockets />
-            </Grid>
+            </Grid> */}
           </Grid>
         </SoftBox>
         <SoftBox mb={3}>
@@ -144,7 +144,7 @@ function Dashboard() {
           </Grid>
         </Grid>
       </SoftBox>
-      <Footer />
+      {/* <Footer /> */}
     </DashboardLayout>
   );
 }

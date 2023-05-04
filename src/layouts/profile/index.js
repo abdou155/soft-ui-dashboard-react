@@ -49,8 +49,21 @@ import team1 from "assets/images/team-1.jpg";
 import team2 from "assets/images/team-2.jpg";
 import team3 from "assets/images/team-3.jpg";
 import team4 from "assets/images/team-4.jpg";
+import LeafletMap from "components/LeafletMap";
+
+
+import React, { useState } from 'react';
 
 function Overview() {
+
+  const [latlng, setLatLng] = useState([35.82460023363378, 10.634560517119423]);
+
+  //const map = L.map(mapRef.current).setView([35.82460023363378, 10.634560517119423], 25);
+
+  function handleMarkerChange(marker) {
+    setLatLng(marker.getLatLng());
+  }
+
   return (
     <DashboardLayout>
       <Header />
@@ -178,7 +191,10 @@ function Overview() {
         </Card>
       </SoftBox>
 
-      <Footer />
+     {/*  <Footer /> */}
+    
+    <LeafletMap latlng={latlng} onMarkerChange={handleMarkerChange} />
+
     </DashboardLayout>
   );
 }

@@ -24,7 +24,7 @@ import SoftTypography from "components/SoftTypography";
 
 // Images
 import wavesWhite from "assets/images/shapes/waves-white.svg";
-import rocketWhite from "assets/images/illustrations/rocket-white.png";
+import rocketWhite from "assets/images/shapes/car-parking.jpg";
 
 function BuildByDevelopers() {
   return (
@@ -35,19 +35,18 @@ function BuildByDevelopers() {
             <SoftBox display="flex" flexDirection="column" height="100%">
               <SoftBox pt={1} mb={0.5}>
                 <SoftTypography variant="body2" color="text" fontWeight="medium">
-                  Build by developers
+                  Description
                 </SoftTypography>
               </SoftBox>
               <SoftTypography variant="h5" fontWeight="bold" gutterBottom>
-                Soft UI Dashboard
+                Smart Parking Finder
               </SoftTypography>
               <SoftBox mb={6}>
                 <SoftTypography variant="body2" color="text">
-                  From colors, cards, typography to complex elements, you will find the full
-                  documentation.
+                A car parking finder app is a software system that helps drivers locate available parking spots in real-time. The app typically uses data from sensors and other sources to identify available parking spaces and displays this information on a map. Users can search for parking based on their location or destination, and the app provides directions to the selected parking spot. Some car parking finder apps also offer features such as parking reservation and payment, as well as the ability to set parking reminders. The goal of these apps is to help drivers save time and reduce the stress of finding a parking spot.
                 </SoftTypography>
               </SoftBox>
-              <SoftTypography
+              {/* <SoftTypography
                 component="a"
                 href="#"
                 variant="button"
@@ -73,11 +72,12 @@ function BuildByDevelopers() {
               >
                 Read More
                 <Icon sx={{ fontWeight: "bold" }}>arrow_forward</Icon>
-              </SoftTypography>
+              </SoftTypography> */}
             </SoftBox>
           </Grid>
-          <Grid item xs={12} lg={5} sx={{ position: "relative", ml: "auto" }}>
-            <SoftBox
+          <Grid container  xs={12} lg={5} justifyContent="flex-end" >
+            <SoftBox component="img" src={rocketWhite} alt="rocket" lg={{ m: "auto" }}  width="30%" pt={3}/>
+           {/*  <SoftBox
               height="100%"
               display="grid"
               justifyContent="center"
@@ -96,8 +96,8 @@ function BuildByDevelopers() {
                 width="100%"
                 height="100%"
               />
-              <SoftBox component="img" src={rocketWhite} alt="rocket" width="100%" pt={3} />
-            </SoftBox>
+              
+            </SoftBox> */}
           </Grid>
         </Grid>
       </SoftBox>

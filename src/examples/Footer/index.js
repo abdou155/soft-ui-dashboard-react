@@ -51,7 +51,7 @@ function Footer({ company, links }) {
       alignItems="center"
       px={1.5}
     >
-      <SoftBox
+      {/* <SoftBox
         display="flex"
         justifyContent="center"
         alignItems="center"
@@ -73,7 +73,7 @@ function Footer({ company, links }) {
           </SoftTypography>
         </Link>
         for a better web.
-      </SoftBox>
+      </SoftBox> */}
       <SoftBox
         component="ul"
         sx={({ breakpoints }) => ({

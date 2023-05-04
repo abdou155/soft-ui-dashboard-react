@@ -75,7 +75,7 @@ function Tables() {
           </SoftBox>
         </Card>
       </SoftBox>
-      <Footer />
+     {/*  <Footer /> */}
     </DashboardLayout>
   );
 }

@@ -51,7 +51,7 @@ function SignIn() {
               Email
             </SoftTypography>
           </SoftBox>
-          <SoftInput type="email" placeholder="Email" />
+          <SoftInput type="email" placeholder="Admin@admin.com" />
         </SoftBox>
         <SoftBox mb={2}>
           <SoftBox mb={1} ml={0.5}>
@@ -59,9 +59,9 @@ function SignIn() {
               Password
             </SoftTypography>
           </SoftBox>
-          <SoftInput type="password" placeholder="Password" />
+          <SoftInput type="password" placeholder="Admin123" />
         </SoftBox>
-        <SoftBox display="flex" alignItems="center">
+        {/* <SoftBox display="flex" alignItems="center">
           <Switch checked={rememberMe} onChange={handleSetRememberMe} />
           <SoftTypography
             variant="button"
@@ -71,13 +71,15 @@ function SignIn() {
           >
             &nbsp;&nbsp;Remember me
           </SoftTypography>
-        </SoftBox>
+        </SoftBox> */}
         <SoftBox mt={4} mb={1}>
-          <SoftButton variant="gradient" color="info" fullWidth>
-            sign in
-          </SoftButton>
+          <Link to="/">
+            <SoftButton variant="gradient" color="info" fullWidth>
+              sign in
+            </SoftButton>
+          </Link>
         </SoftBox>
-        <SoftBox mt={3} textAlign="center">
+        {/* <SoftBox mt={3} textAlign="center">
           <SoftTypography variant="button" color="text" fontWeight="regular">
             Don&apos;t have an account?{" "}
             <SoftTypography
@@ -91,7 +93,7 @@ function SignIn() {
               Sign up
             </SoftTypography>
           </SoftTypography>
-        </SoftBox>
+        </SoftBox> */}
       </SoftBox>
     </CoverLayout>
   );
