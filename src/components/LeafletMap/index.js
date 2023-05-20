@@ -43,7 +43,10 @@ function LeafletMap({ latlng, onMarkerChange }) {
   }, [latlng, onMarkerChange]);
 
   return (
-    <div ref={mapRef} style={{ height: '500px' }}></div>
+    <>
+    {/* <div>Pick the location with the spot. </div> */}
+    <div ref={mapRef} style={{ height: '700px' , width : '800px' }}></div>
+    </>
   );
 }
 

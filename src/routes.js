@@ -39,6 +39,7 @@ Coded by www.creative-tim.com
 import Dashboard from "layouts/dashboard";
 import Tables from "layouts/tables";
 import Leads from "layouts/leads";
+import Customers from "layouts/customers";
 import Billing from "layouts/billing";
 import VirtualReality from "layouts/virtual-reality";
 import RTL from "layouts/rtl";
@@ -57,6 +58,12 @@ import RoomIcon from '@mui/icons-material/Room';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LogoutIcon from '@mui/icons-material/Logout';
 import DashboardIcon from '@mui/icons-material/Dashboard';
+import Parkings from "layouts/parkings";
+import ParkingForm from "layouts/parkings/parking-form";
+import { useEffect } from "react";
+import Vips from "layouts/vips";
+
+
 
 const routes = [
   {
@@ -82,18 +89,18 @@ const routes = [
     type: "collapse",
     name: "Customers",
     key: "customers",
-    route: "/tables",
+    route: "/customers",
     icon: <PeopleAltIcon size="12px" />,
-    component: <Tables />,
+    component: <Customers />,
     noCollapse: true,
   },
   {
     type: "collapse",
     name: "VIPs",
     key: "vips",
-    route: "/tables",
+    route: "/vips",
     icon: <AutoAwesomeIcon size="12px" />,
-    component: <Tables />,
+    component: <Vips />,
     noCollapse: true,
   },
   {
@@ -128,9 +135,9 @@ const routes = [
     type: "collapse",
     name: "Parkings",
     key: "parkings",
-    route: "/profile",
+    route: "/parkings",
     icon: <LocalParkingIcon size="12px" />,
-    component: <Profile />,
+    component: <Parkings />,
     noCollapse: true,
   },
   {
@@ -168,6 +175,15 @@ const routes = [
     route: "/authentication/sign-in",
     icon: <LogoutIcon size="12px" />,
     component: <SignIn />,
+    noCollapse: true,
+  },
+  {
+    type: "route",
+    name: "Parking Form",
+    key: "parking-form",
+    route: "/parkings/parking-form",
+    icon: <LogoutIcon size="12px" />,
+    component: <ParkingForm />,
     noCollapse: true,
   },
 ];

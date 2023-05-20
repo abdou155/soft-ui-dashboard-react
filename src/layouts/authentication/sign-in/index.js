@@ -33,10 +33,64 @@ import CoverLayout from "layouts/authentication/components/CoverLayout";
 // Images
 import curved9 from "assets/images/curved-images/curved-6.jpg";
 
-function SignIn() {
-  const [rememberMe, setRememberMe] = useState(true);
+import validator from 'validator';
+import { loginAdmin } from '../../../services/admin.service';
+import { useNavigate  } from "react-router-dom";
 
-  const handleSetRememberMe = () => setRememberMe(!rememberMe);
+
+
+function SignIn() {
+  let navigate = useNavigate ();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [emailError, setEmailError] = useState('');
+  const [passError, setPassError] = useState('');
+  const [Error, setError] = useState('');
+
+  const handleChangeEmail = (event) => {
+    setEmail(event.target.value)
+  };
+
+  const handleChangePassword = (event) => {
+    setPassword(event.target.value)
+  };
+
+
+  const validateEmail = () => {
+    if (!validator.isEmail(email)) {
+      setEmailError('Please enter a valid email address.');
+    } else {
+      setEmailError('');
+    }
+  };
+
+  const validatePass = () => {
+    if ( password == "") {
+      setPassError('Please fill the password field');
+    } else {
+      setEmailError('');
+    }
+  };
+
+  const submitLogin =  async (event) => {
+    event.preventDefault();
+    validateEmail();
+    validatePass();
+
+    try {
+      let response = await loginAdmin({email , password})
+      if (  response.data  ){
+        localStorage.setItem('auth', JSON.stringify(response.data));
+        setError("")
+        navigate("/dashboard");
+      }
+    }catch(error){
+      setError("Please verify your credientials")
+    }
+  };
+
+
 
   return (
     <CoverLayout
@@ -51,7 +105,8 @@ function SignIn() {
               Email
             </SoftTypography>
           </SoftBox>
-          <SoftInput type="email" placeholder="Admin@admin.com" />
+          <SoftInput type="email" value={email} onChange={handleChangeEmail}  />
+          {emailError && <small style={{color : "red" , fontSize : "12px"}}>{emailError}</small>}
         </SoftBox>
         <SoftBox mb={2}>
           <SoftBox mb={1} ml={0.5}>
@@ -59,41 +114,17 @@ function SignIn() {
               Password
             </SoftTypography>
           </SoftBox>
-          <SoftInput type="password" placeholder="Admin123" />
+          <SoftInput type="password" value={password} onChange={handleChangePassword} />
+          {passError && <small style={{color : "red" , fontSize : "12px"}}>{passError}</small>}
         </SoftBox>
-        {/* <SoftBox display="flex" alignItems="center">
-          <Switch checked={rememberMe} onChange={handleSetRememberMe} />
-          <SoftTypography
-            variant="button"
-            fontWeight="regular"
-            onClick={handleSetRememberMe}
-            sx={{ cursor: "pointer", userSelect: "none" }}
-          >
-            &nbsp;&nbsp;Remember me
-          </SoftTypography>
-        </SoftBox> */}
         <SoftBox mt={4} mb={1}>
           <Link to="/">
-            <SoftButton variant="gradient" color="info" fullWidth>
+            <SoftButton variant="gradient" color="info" fullWidth onClick={submitLogin}>
               sign in
             </SoftButton>
+            {Error && <small style={{color : "red" , fontSize : "12px"}}>{Error}</small>}
           </Link>
         </SoftBox>
-        {/* <SoftBox mt={3} textAlign="center">
-          <SoftTypography variant="button" color="text" fontWeight="regular">
-            Don&apos;t have an account?{" "}
-            <SoftTypography
-              component={Link}
-              to="/authentication/sign-up"
-              variant="button"
-              color="info"
-              fontWeight="medium"
-              textGradient
-            >
-              Sign up
-            </SoftTypography>
-          </SoftTypography>
-        </SoftBox> */}
       </SoftBox>
     </CoverLayout>
   );
