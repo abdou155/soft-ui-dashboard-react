@@ -17,6 +17,12 @@ export const createParking = async (parkingData) => {
   return response.data;
 };
 
+// function to create a new spot
+export const createSpot = async (spotData) => {
+  const response = await axios.post(`${API_URL}/spots`, spotData);
+  return response.data;
+};
+
 // function to update an existing parking
 export const updateParking = async (parkingId, parkingData) => {
   const response = await axios.put(`${API_URL}/parkings/${parkingId}`, parkingData);

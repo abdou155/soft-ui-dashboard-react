@@ -62,6 +62,7 @@ import Parkings from "layouts/parkings";
 import ParkingForm from "layouts/parkings/parking-form";
 import { useEffect } from "react";
 import Vips from "layouts/vips";
+import Spots from "layouts/spots";
 
 
 
@@ -144,9 +145,9 @@ const routes = [
     type: "collapse",
     name: "Spots",
     key: "spots",
-    route: "/authentication/sign-in",
+    route: "/spots",
     icon: <RoomIcon size="12px" />,
-    component: <SignIn />,
+    component: <Spots />,
     noCollapse: true,
   },
   { type: "title", title: "Admin Settings", key: "admin-settings-pages" },

@@ -264,13 +264,22 @@ function Parkings() {
             )
           }
           <SoftBox sx={{ mt: 2 }} style={{display : "flex" , justifyContent : "end"}}>
-            <SoftButton
+            <SoftButton style={{marginRight : "10px"}}
               onClick={handleClose}
               color="dark"
               size="small"
             >
               Back
             </SoftButton>
+            {/* <Link to={"/spots/"+modalData._id}>
+              <SoftButton
+                onClick={handleClose}
+                color="primary"
+                size="small"
+              >
+                Create Spot
+              </SoftButton>
+            </Link> */}
           </SoftBox>
         </SoftBox>
       </Modal>

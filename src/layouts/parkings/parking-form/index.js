@@ -7,7 +7,7 @@ import SoftBox from "components/SoftBox";
 import { Card } from "@mui/material";
 import SoftInput from "components/SoftInput";
 import SoftButton from "components/SoftButton";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   TextField,
   Radio,
@@ -31,8 +31,9 @@ const initialFormState = {
 
 function ParkingForm() {
   //window.location.reload(false);
-  const [latlng, setLatLng] = useState([35.82460023363378, 10.634560517119423]);
+  const [latlng, setLatLng] = useState([35.68177088485512, 10.10398864746094]);
   const [formState, setFormState] = useState(initialFormState);
+  let navigate = useNavigate ();
 
   useEffect(() => {
     console.log(latlng);
@@ -59,6 +60,7 @@ function ParkingForm() {
     event.preventDefault();
     console.log(formState);
     const response = await createParking(formState);
+    navigate("/parkings");
   };
 
   return (
