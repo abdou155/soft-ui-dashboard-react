@@ -24,7 +24,7 @@ import SoftTypography from "components/SoftTypography";
 
 // Images
 import wavesWhite from "assets/images/shapes/waves-white.svg";
-import rocketWhite from "assets/images/shapes/car-parking.jpg";
+import rocketWhite from  "assets/images/app-logo.png";
 
 function BuildByDevelopers() {
   return (
@@ -76,7 +76,7 @@ function BuildByDevelopers() {
             </SoftBox>
           </Grid>
           <Grid container  xs={12} lg={5} justifyContent="flex-end" >
-            <SoftBox component="img" src={rocketWhite} alt="rocket" lg={{ m: "auto" }}  width="30%" pt={3}/>
+            <SoftBox component="img" src={rocketWhite} alt="rocket" lg={{ m: "auto" }}  width="80%" pt={3}/>
            {/*  <SoftBox
               height="100%"
               display="grid"

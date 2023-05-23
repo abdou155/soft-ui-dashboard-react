@@ -12,6 +12,7 @@ const API_URL = 'http://localhost:5000/api/v1'; // replace with your API URL
 }; */
 
 
+// payload ={email , password}
 // Login
 export const loginAdmin = async (payload) => {
   const response = await axios.post(`${API_URL}/admins/login` , payload );

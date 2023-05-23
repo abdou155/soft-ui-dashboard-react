@@ -62,6 +62,7 @@ function Leads() {
 
   const fetchLeads = async () => {
     let response = await listCustomres("lead")
+    console.log("🚀 ~ file: index.js:65 ~ fetchLeads ~ response:", response)
     if( response.data ){
       prepareData(response.data); 
       setLoading(false);
