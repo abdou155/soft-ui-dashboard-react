@@ -63,6 +63,7 @@ import ParkingForm from "layouts/parkings/parking-form";
 import { useEffect } from "react";
 import Vips from "layouts/vips";
 import Spots from "layouts/spots";
+import UpdateAdmin from "layouts/profile/components/UpdateAdmin";
 
 
 
@@ -151,7 +152,7 @@ const routes = [
     noCollapse: true,
   },
   { type: "title", title: "Admin Settings", key: "admin-settings-pages" },
-  {
+/*   {
     type: "collapse",
     name: "Configuration",
     key: "settings",
@@ -159,7 +160,7 @@ const routes = [
     icon: <Settings size="12px" />,
     component: <SignIn />,
     noCollapse: true,
-  },
+  }, */
   {
     type: "collapse",
     name: "Profile",
@@ -185,6 +186,15 @@ const routes = [
     route: "/parkings/parking-form",
     icon: <LogoutIcon size="12px" />,
     component: <ParkingForm />,
+    noCollapse: true,
+  },
+  {
+    type: "route",
+    name: "Adminn Form",
+    key: "admin-form",
+    route: "/admin/admin-form",
+    icon: <LogoutIcon size="12px" />,
+    component: <UpdateAdmin />,
     noCollapse: true,
   },
 ];

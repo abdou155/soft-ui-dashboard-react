@@ -41,12 +41,34 @@ import breakpoints from "assets/theme/base/breakpoints";
 // Images
 import burceMars from "assets/images/ivana-square.jpg";
 import curved0 from "assets/images/curved-images/curved0.jpg";
+import { useNavigate  } from "react-router-dom";
+import { findAdmin } from "services/admin.service";
 
-function Header() {
+function Header(  ) {
   const [tabsOrientation, setTabsOrientation] = useState("horizontal");
   const [tabValue, setTabValue] = useState(0);
+  const [profile, setProfile] = useState({});
+  let navigate = useNavigate ();
 
-  useEffect(() => {
+  const fetchProfile =  async () => {
+    const user = JSON.parse(localStorage.getItem('auth'));
+    console.log("🚀 ~ file: index.js:55 ~ fetchProfile ~ user:", user)
+    if ( user && user._id ){
+      const response =  await findAdmin( user._id )
+      if( response.data ){
+        setProfile(response.data)
+      }else{
+        setProfile(profile)
+      }
+    }else{
+      navigate("/authentication/sign-in");
+    }
+  }
+
+  useEffect( () => {
+
+    fetchProfile()
+
     // A function that sets the orientation state of the tabs.
     function handleTabsOrientation() {
       return window.innerWidth < breakpoints.values.sm
@@ -113,7 +135,7 @@ function Header() {
           <Grid item>
             <SoftBox height="100%" mt={0.5} lineHeight={1}>
               <SoftTypography variant="h5" fontWeight="medium">
-                Nour Jannene
+              { profile.firstName?.toUpperCase() } { profile.lastName?.toUpperCase() } 
               </SoftTypography>
               <SoftTypography variant="button" color="text" fontWeight="medium">
                 Parkini Administrator
