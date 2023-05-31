@@ -64,6 +64,7 @@ import { useEffect } from "react";
 import Vips from "layouts/vips";
 import Spots from "layouts/spots";
 import UpdateAdmin from "layouts/profile/components/UpdateAdmin";
+import Reservations from "layouts/reservations";
 
 
 
@@ -78,7 +79,7 @@ const routes = [
     noCollapse: true,
   },
   { type: "title", title: "Customers", key: "customers-type-pages" },
-  {
+  /* {
     type: "collapse",
     name: "Leads",
     key: "leads",
@@ -86,7 +87,7 @@ const routes = [
     icon: <PersonIcon size="12px" />,
     component: <Leads />,
     noCollapse: true,
-  },
+  }, */
   {
     type: "collapse",
     name: "Customers",
@@ -96,7 +97,7 @@ const routes = [
     component: <Customers />,
     noCollapse: true,
   },
-  {
+  /* {
     type: "collapse",
     name: "VIPs",
     key: "vips",
@@ -104,14 +105,14 @@ const routes = [
     icon: <AutoAwesomeIcon size="12px" />,
     component: <Vips />,
     noCollapse: true,
-  },
+  }, */
   {
     type: "collapse",
-    name: "Transactions",
-    key: "transactions",
-    route: "/billing",
+    name: "Reservations",
+    key: "reservations",
+    route: "/reservations",
     icon: <CreditCard size="12px" />,
-    component: <Billing />,
+    component: <Reservations />,
     noCollapse: true,
   },
   /* {

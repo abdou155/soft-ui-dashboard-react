@@ -24,6 +24,7 @@ function Overview() {
   const configCode = "VIP_LEVEL";
   const [profile, setProfile] = useState({});
   const [config, setConfig] = useState(10);
+  const [promotion, setPromotion] = useState(0);
   const [configMsg, setConfigMsg] = useState("");
 
   const fetchProfile = async () => {
@@ -44,6 +45,8 @@ function Overview() {
     const response = await findConfig(configCode);
     if (response.data) {
       setConfig(response.data?.content);
+      const promo = await findConfig('PROMOTION');
+      setPromotion(promo.data.content)
     } else {
       setConfig(10);
     }
@@ -54,7 +57,8 @@ function Overview() {
       code: configCode,
       content: config,
       is_active: true,
-    };
+    } 
+    await editConfig({ code: "PROMOTION", content: promotion, is_active: true })
     const response = await editConfig(payload);
     if (response.data) {
       setConfigMsg("Config updated successfuly");
@@ -112,6 +116,19 @@ function Overview() {
                       name="firstName"
                       value={config}
                       onChange={(e) => setConfig(e.target.value)}
+                    />
+                  </SoftBox>
+                  <SoftBox mb={2}>
+                    <SoftBox mb={1} ml={0.5}>
+                      <SoftTypography component="label" variant="caption" fontWeight="bold">
+                        Promotion (%)
+                      </SoftTypography>
+                    </SoftBox>
+                    <SoftInput
+                      type="number"
+                      name="firstName"
+                      value={promotion}
+                      onChange={(e) => setPromotion(e.target.value)}
                     />
                   </SoftBox>
 
