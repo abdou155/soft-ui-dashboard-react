@@ -40,11 +40,36 @@ import OrderOverview from "layouts/dashboard/components/OrderOverview";
 
 // Data
 import reportsBarChartData from "layouts/dashboard/data/reportsBarChartData";
+import { useEffect, useState } from "react";
+import { getReports } from "services/admin.service";
 import gradientLineChartData from "layouts/dashboard/data/gradientLineChartData";
 
 function Dashboard() {
   const { size } = typography;
   const { chart, items } = reportsBarChartData;
+  const [diag , setDiag ] = useState({
+    labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    datasets: []
+  })
+
+  const [stats , setStats ] = useState({
+    customerCount: 0,
+    totalRevenu: 0,
+    vipCount: 0,
+    reservedSpots: 0
+  })
+
+  const fetchReports = async () => {
+    let response = await getReports();
+    if (response.data) {
+      setDiag(response.data.chart)
+      setStats(response.data.stats)
+    }
+  }
+
+  useEffect(() => {
+     fetchReports();
+  }, []);
 
   return (
     <DashboardLayout>
@@ -66,7 +91,7 @@ function Dashboard() {
             <Grid item xs={12} sm={6} xl={3}>
               <MiniStatisticsCard
                 title={{ text: "today's revenu" }}
-                count="TND 53,000"
+                count={ stats.totalRevenu + " TND"}
                 //percentage={{ color: "success", text: "+55%" }}
                 icon={{ color: "info", component: "paid" }}
               />
@@ -74,15 +99,15 @@ function Dashboard() {
             <Grid item xs={12} sm={6} xl={3}>
               <MiniStatisticsCard
                 title={{ text: "total customer" }}
-                count="5000"
+                count={stats.customerCount}
                 //percentage={{ color: "success", text: "+3%" }}
                 icon={{ color: "info", component: "public" }}
               />
             </Grid>
             <Grid item xs={12} sm={6} xl={3}>
               <MiniStatisticsCard
-                title={{ text: "today's VIP" }}
-                count="0"
+                title={{ text: "total's VIP" }}
+                count={stats.vipCount}
                 //percentage={{ color: "error", text: "-2%" }}
                 icon={{ color: "info", component: "emoji_events" }}
               />
@@ -90,7 +115,7 @@ function Dashboard() {
             <Grid item xs={12} sm={6} xl={3}>
               <MiniStatisticsCard
                 title={{ text: "Reserved spots" }}
-                count="13"
+                count={stats.reservedSpots}
                 //percentage={{ color: "success", text: "+5%" }}
                 icon={{
                   color: "info",
@@ -102,36 +127,24 @@ function Dashboard() {
         </SoftBox>
         <SoftBox mb={3}>
           <Grid container spacing={3}>
-            <Grid item xs={12} lg={5}>
-              <ReportsBarChart
-                title="active users"
-                description={
-                  <>
-                    (<strong>+23%</strong>) than last week
-                  </>
-                }
-                chart={chart}
-                items={items}
-              />
-            </Grid>
-            <Grid item xs={12} lg={7}>
+            <Grid item xs={12} lg={12}>
               <GradientLineChart
-                title="Sales Overview"
+                title="Customers / Reservation Evolution"
                 description={
                   <SoftBox display="flex" alignItems="center">
                     <SoftBox fontSize={size.lg} color="success" mb={0.3} mr={0.5} lineHeight={0}>
                       <Icon className="font-bold">arrow_upward</Icon>
                     </SoftBox>
                     <SoftTypography variant="button" color="text" fontWeight="medium">
-                      4% more{" "}
+                      Reservation and customers
                       <SoftTypography variant="button" color="text" fontWeight="regular">
-                        in 2021
+                        in Last 9 months
                       </SoftTypography>
                     </SoftTypography>
                   </SoftBox>
                 }
                 height="20.25rem"
-                chart={gradientLineChartData}
+                chart={diag ?? gradientLineChartData}
               />
             </Grid>
           </Grid>

@@ -23,6 +23,14 @@ export const loginAdmin = async (payload) => {
 };
 
 
+export const getReports = async () => {
+  const response = await axios.post(`${API_URL}/admins/reports` , {} );
+  if (response?.data){
+    return response.data;
+  }
+  return false;
+};
+
 export const findAdmin = async (id) => {
   const response = await axios.get(`${API_URL}/admins/${id}` );
   if (response?.data){

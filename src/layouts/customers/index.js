@@ -19,6 +19,7 @@ import { LinearProgress } from "@material-ui/core";
 import { listCustomres } from "services/customer.service";
 import SoftButton from "components/SoftButton";
 import { deleteLead } from "services/customer.service";
+import { useNavigate } from "react-router-dom";
 
 const style = {
   position: "absolute",
@@ -55,6 +56,9 @@ const dropdownStyles = {
 };
 
 function Customers() {
+  let navigate = useNavigate ();
+  
+
   const [loading, setLoading] = useState(true);
   const [rows, setRows] = useState([]);
   const [open, setOpen] = useState(false);
@@ -68,6 +72,10 @@ function Customers() {
   const handleClose = () => {
     setModalData({});
     setOpen(false);
+  };
+
+  const handleHistory = (data) => {
+    navigate("/reservation/user/"+data._id);
   };
 
   const prCols = [
@@ -167,7 +175,7 @@ function Customers() {
               </SoftBox>
 
               { el.type != "lead" ? (
-                <SoftBox onClick={() => handleOpen(el)}>
+                <SoftBox onClick={() => handleHistory(el)}>
                   <Icon sx={{ cursor: "pointer", color: "green" }} fontSize="small">
                     history
                   </Icon>

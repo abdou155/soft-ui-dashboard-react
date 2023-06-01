@@ -18,6 +18,13 @@ export const listReservations = async (filter) => {
   return false;
 };
 
+export const listReservationsByUser = async (id) => {
+  const response = await axios.get(`${API_URL}/reservations/user/${id}`);
+  if (response?.data){
+    return response.data;
+  }
+  return false;
+};
 
 export const deleteLead = async (phone) => {
   const response = await axios.delete(`${API_URL}/users/${phone}`);

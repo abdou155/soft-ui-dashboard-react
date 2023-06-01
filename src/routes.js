@@ -65,6 +65,7 @@ import Vips from "layouts/vips";
 import Spots from "layouts/spots";
 import UpdateAdmin from "layouts/profile/components/UpdateAdmin";
 import Reservations from "layouts/reservations";
+import CustomerReservation from "layouts/reservations/customerReservation";
 
 
 
@@ -197,7 +198,16 @@ const routes = [
     icon: <LogoutIcon size="12px" />,
     component: <UpdateAdmin />,
     noCollapse: true,
+  },{
+    type: "route",
+    name: "Customer Reservation",
+    key: "customer-reservation",
+    route: "/reservation/user/:id",
+    icon: <LogoutIcon size="12px" />,
+    component: <CustomerReservation />,
+    noCollapse: true,
   },
+  
 ];
 
 export default routes;
