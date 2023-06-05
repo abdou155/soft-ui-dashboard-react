@@ -109,7 +109,7 @@ const routes = [
   }, */
   {
     type: "collapse",
-    name: "Reservations",
+    name: "Transactions",
     key: "reservations",
     route: "/reservations",
     icon: <CreditCard size="12px" />,

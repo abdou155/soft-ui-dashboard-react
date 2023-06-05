@@ -35,6 +35,7 @@ const initialFormState = {
   price: 0,
   max_hour: undefined ,
   is_ev: false,
+  category : "normal",
   status: "available",
   parking_id: "",
 };
@@ -71,7 +72,7 @@ function Spots() {
         price : formState.price,
         max_hour : (formState.max_hour == 0) ? null : formState.max_hour,
         status : formState.status,
-        is_ev : (formState.is_ev == "true") ? true : false
+        category : (formState.category) ? formState.category : "NORMAL"
       }
       const response = await createSpot(formState);
       if ( response ) {
@@ -147,13 +148,15 @@ function Spots() {
                   <FormControl component="fieldset" style={{ marginBottom: "20px" }}>
                     <FormLabel component="legend">EV</FormLabel>
                     <RadioGroup
-                      aria-label="ev"
-                      name="is_ev"
-                      value={formState.is_ev}
+                      aria-label="Category"
+                      name="category"
+                      value={formState.category}
                       onChange={handleChange}
                     >
-                      <FormControlLabel value="false" control={<Radio />} label="No" />
-                      <FormControlLabel value="true" control={<Radio />} label="Yes" />
+                      <FormControlLabel value="NORMAL" control={<Radio />} label="Traditional spot" />
+                      <FormControlLabel value="EVSE" control={<Radio />} label="EVSE" />
+                      <FormControlLabel value="PREGNENT" control={<Radio />} label="Pregenet women" />
+                      <FormControlLabel value="HANDICAP" control={<Radio />} label="Individual with disabilites" />
                     </RadioGroup>
                   </FormControl>
                 </SoftBox>
