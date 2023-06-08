@@ -146,7 +146,7 @@ function Spots() {
                 </SoftBox>
                 <SoftBox style={{ marginBottom: "15px" }}>
                   <FormControl component="fieldset" style={{ marginBottom: "20px" }}>
-                    <FormLabel component="legend">EV</FormLabel>
+                    <FormLabel component="legend">Category</FormLabel>
                     <RadioGroup
                       aria-label="Category"
                       name="category"
