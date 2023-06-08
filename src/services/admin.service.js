@@ -25,6 +25,7 @@ export const loginAdmin = async (payload) => {
 
 export const getReports = async () => {
   const response = await axios.post(`${API_URL}/admins/reports` , {} );
+  console.log(response.status)
   if (response?.data){
     return response.data;
   }
@@ -50,7 +51,7 @@ export const editAdmin = async (payload) => {
 
 export const findConfig = async (code) => {
   const response = await axios.get(`${API_URL}/admins/config/vip/${code}` );
-  if (response?.data){
+  if (response?.status == 200){
     return response.data;
   }
   return false;

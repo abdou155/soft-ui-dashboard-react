@@ -43,7 +43,7 @@ function Overview() {
 
   const fetchConfig = async () => {
     const response = await findConfig(configCode);
-    if (response.data) {
+    if (response?.data) {
       setConfig(response.data?.content);
       const promo = await findConfig('PROMOTION');
       setPromotion(promo.data.content)
