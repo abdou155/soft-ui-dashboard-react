@@ -18,6 +18,7 @@ import {
   Button,
 } from "@material-ui/core";
 import { createParking } from "services/parking.service";
+import Swal from "sweetalert2";
 
 const initialFormState = {
   name: "",
@@ -60,7 +61,15 @@ function ParkingForm() {
     event.preventDefault();
     console.log(formState);
     const response = await createParking(formState);
-    navigate("/parkings");
+    if (response.message === "Parking is already exist") {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text:  "Parking is already exist !"
+      })
+    }else{
+      navigate("/parkings");
+    }
   };
 
   return (
